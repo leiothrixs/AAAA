@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ezworking.wechatunlock">
+
+    <application
+        android:name="com.ezworking.wechatunlock.application.MainApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        >
+        <activity android:name="com.ezworking.wechatunlock.ui.activity.LoadingActivity"
+            android:theme="@style/AppTheme"
+            >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.ezworking.wechatunlock.ui.activity.MainActivity">
+
+
+        </activity>
+    </application>
+
+</manifest>

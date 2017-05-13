@@ -1,0 +1,75 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="@color/gray_background"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:minHeight="45dp"
+            android:orientation="horizontal">
+
+
+            <RadioGroup
+                android:id="@+id/rg_exam"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb_left"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/sourse_tab_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="考核中"
+                    android:textColor="@color/gray_buttom_text"
+                    android:textSize="@dimen/text_size_large_15"  />
+                <View
+                    android:layout_width="0px"
+                    android:layout_height="35dp"
+                    android:background="@color/gray_line"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_right"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/sourse_tab_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="已完结"
+                    android:textColor="@color/gray_buttom_text"
+                    android:textSize="@dimen/text_size_large_15" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_examStatus"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/white"
+            android:layout_weight="1"></android.support.v4.view.ViewPager>
+
+
+    </LinearLayout>
+    、</LinearLayout>
