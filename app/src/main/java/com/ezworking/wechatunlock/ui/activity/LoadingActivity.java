@@ -2,12 +2,12 @@ package com.ezworking.wechatunlock.ui.activity;
 
 
 import android.util.Log;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.widget.RelativeLayout;
 
+import com.dou361.statusbar.StatusBarUtil;
 import com.ezworking.my_android.base.utils.AsyncHttpClientUtil;
 import com.ezworking.my_android.base.utils.NetWorkUtil;
 import com.ezworking.my_android.base.utils.PageJumps;
@@ -15,7 +15,6 @@ import com.ezworking.my_android.base.utils.ToastUtil;
 import com.ezworking.wechatunlock.R;
 import com.ezworking.wechatunlock.api.RequestApi;
 import com.ezworking.wechatunlock.application.AppCache;
-import com.ezworking.wechatunlock.domain.ResultUserInfoBean;
 import com.ezworking.wechatunlock.domain.UserInfoBean;
 import com.ezworking.wechatunlock.ui.AppBaseActivity;
 import com.google.gson.Gson;
@@ -54,13 +53,14 @@ public class LoadingActivity extends AppBaseActivity {
         setTheme(R.style.AppTheme);
       //  requestWindowFeature(Window.FEATURE_NO_TITLE);
         //设置全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+       /* getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);*/
         setContentView(R.layout.activity_loading);
     }
 
     public void initData(){
        // startLoadingAnimation();
+        StatusBarUtil.setColorNoTranslucent(this,getResources().getColor(R.color.white));
         initAnimation();
         /*isAnimationEnd = true;
         handler.sendEmptyMessage(ENTER_APP_CHECK);*/
@@ -146,9 +146,8 @@ public class LoadingActivity extends AppBaseActivity {
     }
 
     private void gotoLogin(){
-        //2017.05.10 PageJumps.PageJumpsAlpha(aty, LoginActivity.class, null);
-        PageJumps.PageJumpsAlpha(this, MainActivity.class, null);
-        finish();
+         PageJumps.PageJumps(aty, LoginActivity.class, null);
+         finish();
     }
 
     private void slienceLogin() {
@@ -168,13 +167,12 @@ public class LoadingActivity extends AppBaseActivity {
                     try{
                         String response = new String(responseBody,"utf-8");
                         Log.d("api",response);
-                        ResultUserInfoBean resultBase = new Gson().fromJson(response, ResultUserInfoBean.class);
-                        if (!RequestApi.isSuccess(resultBase,aty)) {
+                        UserInfoBean userInfoBean = new Gson().fromJson(response, UserInfoBean.class);
+                       /* if (!RequestApi.isSuccess(resultBase,aty)) {
                             ToastUtil.showToast(aty, resultBase.getResponseMsg());
                             gotoLogin();
                             return;
-                        }
-                        UserInfoBean userInfoBean = resultBase.getData();
+                        }*/
                         if (userInfoBean == null) {
                             gotoLogin();
                             return;

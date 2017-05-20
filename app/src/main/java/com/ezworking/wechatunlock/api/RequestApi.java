@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.ezworking.wechatunlock.domain.ResultBean;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.ezworking.my_android.base.utils.DeviceUtils;
@@ -11,7 +12,6 @@ import com.ezworking.my_android.base.utils.NetWorkUtil;
 import com.ezworking.my_android.base.utils.ToastUtil;
 import com.ezworking.wechatunlock.application.AppCache;
 import com.ezworking.wechatunlock.application.AppConfig;
-import com.ezworking.wechatunlock.domain.ResultBase;
 
 import org.json.JSONObject;
 
@@ -25,9 +25,7 @@ import cz.msebera.android.httpclient.entity.StringEntity;
 public class RequestApi {
 
     public static AsyncHttpClient client = null;
-    public static String CLIENT = "android";
-    private static String FORMAT = "json";
-    private static String APP_TYPE = "trainingSys";
+    public static String deviceID = "android";
 
     private static boolean isDebug = true;
 
@@ -73,21 +71,19 @@ public class RequestApi {
             e.printStackTrace();
         }
 
-        String deviceid;
+      //  String deviceid;
         try {
             pkName = context.getPackageName();
             versionName = context.getPackageManager().getPackageInfo(pkName, 0).versionName;
-            deviceid = DeviceUtils.getDeviceUniqueCode();
+           /* deviceid = DeviceUtils.getDeviceUniqueCode();
             if(TextUtils.isEmpty(deviceid)){
                 deviceid = getAppId(context);
-            }
-            jsonObject.put("appType", APP_TYPE);
+            }*/
             jsonObject.put("appversion",versionName);
-            jsonObject.put("deviceId", deviceid);
-            jsonObject.put("hig", "");
-            jsonObject.put("lat", "");
-            jsonObject.put("lng", "");
-            jsonObject.put("platform", CLIENT);
+            jsonObject.put("deviceId", deviceID);
+            jsonObject.put("pushToken", "");
+            jsonObject.put("userToken", "");
+
             if(AppCache.getInstance().isUserLogin() && !TextUtils.isEmpty(AppCache.getInstance().getToken())){
                 jsonObject.put("token", AppCache.getInstance().getToken());
             }
@@ -121,7 +117,7 @@ public class RequestApi {
         try {
             String url = ConstantNetUrl.LOGIN;
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("account",account);
+            jsonObject.put("userName",account);
             jsonObject.put("pwd",pwd );
             jsonPost(context,url,jsonObject,asyncHttpResponseHandler);
         } catch (Exception e) {
@@ -129,7 +125,7 @@ public class RequestApi {
         }
     }
 
-    public static Boolean isSuccess(ResultBase resultBase, Context context){
+    public static Boolean isSuccess(ResultBean resultBase, Context context){
         if(resultBase == null){
             ToastUtil.showToast(context,"请求失败，请稍后重试!");
             return false;

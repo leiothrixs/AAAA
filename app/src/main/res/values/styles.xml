@@ -25,7 +25,7 @@
 
     </style>
 
-    <style name="Appwelcome" parent="android:Theme.Translucent.NoTitleBar.Fullscreen"/>
+    <style name="Appwelcome" parent="android:Theme.Translucent"/>
 
 
 
@@ -108,7 +108,7 @@
 
     <style name="divider_wn_style">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1px</item>
+        <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/gray_line</item>
 
     </style>

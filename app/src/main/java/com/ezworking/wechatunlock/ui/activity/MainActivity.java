@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.ezworking.my_android.base.utils.CommonActionBar;
 import com.ezworking.wechatunlock.R;
 import com.ezworking.wechatunlock.application.AppCache;
@@ -26,6 +28,8 @@ public class MainActivity extends AppBaseActivity{
     @Override
     public void setRootView() {
         setContentView(R.layout.activity_main);
+
+        PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY,"EiFpiWImzUijXEXKmWGiFCcI");
     }
 
 
@@ -62,6 +66,7 @@ public class MainActivity extends AppBaseActivity{
                             public void setTitle(TextView v) {
                                 // TODO Auto-generated method stub
                                 v.setText("首页");
+                                v.setTextColor(getResources().getColor(R.color.black_text3));
                             }
                         });
         tv_tile = commonActionBar.getTitleView();

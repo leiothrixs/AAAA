@@ -7,7 +7,7 @@ import com.ezworking.my_android.base.utils.SharePreferenceUtils;
 import com.ezworking.wechatunlock.domain.UserInfoBean;
 
 /**
- * Created by dujiande on 2016/9/14.
+ * Created by sxj on 2017/5/16.
  */
 public class AppCache {
     private static AppCache ourInstance = new AppCache();
@@ -44,7 +44,7 @@ public class AppCache {
     public String getToken(){
         UserInfoBean userInfoBean = getUserInfo();
         if(userInfoBean != null){
-            return userInfoBean.getuToken();
+            return userInfoBean.data.getUserToken();
         }
         return "";
     }
@@ -52,7 +52,7 @@ public class AppCache {
     public String getAccount(){
         UserInfoBean userInfoBean = getUserInfo();
         if(userInfoBean != null){
-            return userInfoBean.getuID();
+            return userInfoBean.data.getWechat();
         }
         return "";
     }

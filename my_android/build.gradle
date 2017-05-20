@@ -32,7 +32,7 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.13.0'
     compile 'com.google.code.gson:gson:2.7'
    // compile 'com.nineoldandroids:library:2.4.0'
-  //  compile 'com.dou361.statusbar:jjdxm-statusbar:1.0.0'
+   compile 'com.dou361.statusbar:jjdxm-statusbar:1.0.0'
     compile files('libs/butterknife-7.0.1.jar')
     compile 'com.android.support:appcompat-v7:23.3.0'
 }

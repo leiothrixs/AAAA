@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,7 +24,8 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
-     //   Fresco.initialize(this);
+
+        Fresco.initialize(this);
     }
 
     public static BaseApplication getInst(){

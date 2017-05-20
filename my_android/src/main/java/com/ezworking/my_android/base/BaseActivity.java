@@ -2,10 +2,14 @@ package com.ezworking.my_android.base;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.dou361.statusbar.StatusBarUtil;
+import com.ezworking.my_android.R;
 
 import butterknife.ButterKnife;
 
-public class BaseActivity extends Activity implements IBaseActivity{
+public class BaseActivity extends AppCompatActivity implements IBaseActivity{
 
     public Activity aty;
 
@@ -16,10 +20,9 @@ public class BaseActivity extends Activity implements IBaseActivity{
         aty = this;
         setRootView();
         ButterKnife.bind(this);
-
-        /*if (openStatus()) {
+        if (openStatus()) {
             StatusBarUtil.setColorNoTranslucent(this, getResources().getColor(R.color.maincolor));
-        }*/
+        }
         initSetting();
         initData();
         initListener();
@@ -28,12 +31,10 @@ public class BaseActivity extends Activity implements IBaseActivity{
     public void initSetting() {
     }
 
-    /**
-     * 是否使用沉浸式状态栏
-     */
     protected boolean openStatus() {
         return true;
     }
+
 
 
     @Override
@@ -45,12 +46,10 @@ public class BaseActivity extends Activity implements IBaseActivity{
 
     protected void onResume() {
         super.onResume();
-        //MobclickAgent.onResume(this);
     }
 
     protected void onPause() {
         super.onPause();
-        //MobclickAgent.onPause(this);
     }
 
     /**

@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">微信解锁</string>
+    <string name="accout">请输入你的账号</string>
+    <string name="pwd">请输入你的密码</string>
+    <string name="pwd2">请输入密码</string>
+    <string name="no_accout1">没有账号?</string>
+    <string name="no_accout2">通过微信去注册吧</string>
+    <string name="phone">请输入手机号</string>
+    <string name="code">请输入验证码</string>
+    <string name="get_code">获取验证码</string>
+    <string name="nick_name">请输入昵称</string>
+    <string name="qq">请输入QQ</string>
+    <string name="wechat">请输入微信号</string>
+    <string name="id">请输入推荐人ID</string>
+    <string name="rate">请输入您要兑换的点数</string>
+    <string name="result">根据您输入的点数可兑换</string>
 </resources>
