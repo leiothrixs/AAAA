@@ -19,6 +19,7 @@ import com.ezworking.my_android.base.utils.CommonActionBar;
 import com.ezworking.my_android.base.utils.LogUtil;
 import com.ezworking.my_android.base.utils.MD5;
 import com.ezworking.my_android.base.utils.PageJumps;
+import com.ezworking.my_android.base.utils.SzSign;
 import com.ezworking.my_android.base.utils.ToastUtil;
 import com.ezworking.my_android.base.view.LoadingDialog;
 import com.ezworking.wechatunlock.R;
@@ -252,8 +253,10 @@ public class RegisterActivity extends AppBaseActivity {
     private void getVerifyCode() {
         try {
             JSONObject jsonObject = new JSONObject();
-            jsonObject.put("key", "");
-            jsonObject.put("token", "");
+            String signStr = SzSign.createSign(jsonObject);
+            String token = MD5.getMessageDigest(signStr.getBytes());
+            jsonObject.put("key", signStr);
+            jsonObject.put("token", token);
             jsonObject.put("phone", phoneNum);
             RequestApi.jsonPost(aty, ConstantNetUrl.SENDCODE, jsonObject, new AsyncHttpResponseHandler() {
 
