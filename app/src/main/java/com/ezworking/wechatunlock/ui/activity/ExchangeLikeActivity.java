@@ -75,10 +75,15 @@ public class ExchangeLikeActivity extends AppBaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 et =  edittext.getText().toString().trim();
-                int num = Integer.parseInt(et);
-                int  rate= Integer.parseInt(qqRate);
-                Like.setText(""+num*rate);
-                tvLike.setVisibility(View.VISIBLE);
+             final int num = Integer.parseInt(et);
+             final int  rate= Integer.parseInt(qqRate);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                   Like.setText(""+num*rate);
+                   tvLike.setVisibility(View.VISIBLE);
+                    }
+                });
                 if (et!=null&&et.length()>0){
                     exchange.setEnabled(true);
                     exchange.setAlpha(1.0f);
